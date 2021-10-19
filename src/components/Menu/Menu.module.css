@@ -1,0 +1,61 @@
+.blur {
+    width: 70vw;
+    left: 30%;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+}
+
+.content {
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none; 
+}
+
+.header {
+    padding: 10px;
+    font-size: 2em;
+    color: white;
+    border-bottom: 1px solid white;
+    width: 100%;
+    text-align: center;
+}
+
+.item {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: all 0.1s; 
+}
+
+.item:hover{
+    font-size: 1.6em; 
+    margin: 4px;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.list {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and (max-width: 768px){
+    .content {
+        width: 100%;
+    }
+    .blur {
+        width: 0;
+        backdrop-filter: none;
+    }
+}
