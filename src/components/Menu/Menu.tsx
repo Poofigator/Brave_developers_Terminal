@@ -1,26 +1,30 @@
-import styles from './Menu.module.css'
+import Link from "next/link";
+import { menuProps, item } from "./Header";
 
-import Link from "next/link"
+import { MenuContainer, Blur, Content, Header, List, Item, AddButton } from "./styles";
 
-const Menu = ({active, setActive, header, items}:any) => {
-    let i = 0
-    return (
-        <div className={active ? 'menu active' : 'menu'} onClick={() => setActive(false)}>
-            <div className={styles.blur}/>
-            <div className={styles.content} onClick={(e:any) => e.stopPropagation()}>
-                <div className={styles.header}>{header}</div>
-                <ul className={styles.list}>
-                    {items.map((item:any) =>
-                        <li key={i+= 1}>
-                            <Link href={item.href}>
-                                <a className={styles.item}>{item.value}</a>
-                            </Link>
-                        </li>
-                            )}
-                </ul>
-            </div>
-        </div>
-    )
-}
+const Menu = ({ active, setActive, header, items, addItem }: menuProps) => {
+  let i = 0;
+  return (
+    <MenuContainer active={active} onClick={() => setActive(false)}>
+      <Blur />
+      <Content onClick={(e) => e.stopPropagation()}>
+        <Header>{header}</Header>
+        <List>
+          {items.map((item: item) => (
+            <li key={(i += 1)}>
+              <Link href={item.href}>
+                <Item>{item.value}</Item>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <AddButton onClick={addItem}>Добавить</AddButton>
+          </li>
+        </List>
+      </Content>
+    </MenuContainer>
+  );
+};
 
 export default Menu;
